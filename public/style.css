@@ -1,0 +1,718 @@
+/* Water Drop Design - XOS 16.2.0 Inspired */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Water drop background effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glassmorphism containers */
+.top {
+    background: rgba(30, 30, 50, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 30px 25px 30px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.top h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    padding-top: 5px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 5px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    padding: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Water drop card design */
+.box {
+    background: rgba(30, 30, 50, 0.5);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: waterDrop 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes waterDrop {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(10%, 10%) scale(1.1); }
+    50% { transform: translate(-5%, 15%) scale(0.9); }
+    75% { transform: translate(15%, -5%) scale(1.05); }
+}
+
+.box h2 {
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 25px;
+    line-height: 1.6;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.box a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.box a:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Water drop inputs */
+input {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
+    z-index: 2;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: scale(1.02);
+}
+
+.password-input-wrap {
+    position: relative;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.password-input-wrap input {
+    margin: 0;
+}
+
+.input-tooltip {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: min(280px, calc(100vw - 80px));
+    max-width: 280px;
+    background: rgba(17, 24, 39, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 10px 12px;
+    color: #eef2ff;
+    font-size: 0.76rem;
+    line-height: 1.45;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 20;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
+
+.password-input-wrap:hover .input-tooltip,
+.password-input-wrap:focus-within .input-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Water drop buttons */
+button {
+    width: 100%;
+    padding: 15px 30px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Alert messages with water drop effect */
+.err {
+    background: rgba(255, 82, 82, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 82, 82, 0.25);
+    color: #ff6b6b;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(255, 82, 82, 0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.info {
+    background: rgba(82, 196, 26, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(82, 196, 26, 0.25);
+    color: #52c41a;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(82, 196, 26, 0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.otp {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.2rem;
+}
+
+/* Content grid */
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(30, 30, 50, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 25px;
+    flex: 1;
+    min-width: 200px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: rgba(30, 30, 50, 0.5);
+}
+
+/* User list items */
+.user {
+    background: rgba(30, 30, 50, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.user:hover {
+    background: rgba(30, 30, 50, 0.4);
+    transform: translateX(5px);
+}
+
+.user strong {
+    color: white;
+    font-size: 1.1rem;
+}
+
+.user form {
+    display: inline;
+    margin-left: 15px;
+}
+
+.user button {
+    width: auto;
+    padding: 8px 20px;
+    margin: 5px;
+    font-size: 0.9rem;
+}
+
+/* Search form */
+.content form {
+    margin-bottom: 30px;
+}
+
+.content form input {
+    display: inline-block;
+    width: calc(100% - 120px);
+    margin-right: 10px;
+}
+
+.content form button {
+    width: auto;
+    padding: 15px 30px;
+    margin: 0;
+}
+
+/* Movie carousel and cards */
+.movie-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.movie-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.movie-carousel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.movie-carousel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.movie-carousel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.movie-card {
+    flex: 0 0 auto;
+    width: 200px;
+    background: rgba(30, 30, 50, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    background: rgba(30, 30, 50, 0.5);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.movie-poster-placeholder {
+    width: 100%;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-info h4 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-meta {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive design */
+.top {
+    padding: clamp(0.9rem, 1.8vw, 1.4rem) clamp(1rem, 2.6vw, 2rem) clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.top h1 {
+    font-size: clamp(1.25rem, 0.9rem + 1vw, 1.8rem);
+}
+
+.nav {
+    gap: clamp(0.5rem, 1vw, 1rem);
+}
+
+.nav a {
+    padding: clamp(0.55rem, 1vw, 0.7rem) clamp(0.8rem, 2vw, 1.2rem);
+}
+
+.content {
+    padding: clamp(1.2rem, 3vw, 2.5rem);
+}
+
+.box {
+    max-width: min(500px, calc(100vw - 2rem));
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    margin: clamp(1.25rem, 3vw, 2.5rem) auto;
+}
+
+.movie-card {
+    width: clamp(150px, 22vw, 200px);
+}
+
+.movie-poster,
+.movie-poster-placeholder {
+    height: clamp(220px, 30vw, 300px);
+}
+
+.movie-info h4 {
+    font-size: clamp(0.85rem, 1vw + 0.5rem, 1rem);
+}
+
+.movie-meta {
+    font-size: clamp(0.7rem, 0.6rem + 0.4vw, 0.85rem);
+}
+
+@media (max-width: 768px) {
+    .top {
+        padding: 15px 20px;
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .top h1 {
+        font-size: 1.4rem;
+    }
+    
+    .nav {
+        float: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .box {
+        padding: 30px 25px;
+        margin: 30px 20px;
+        border-radius: 25px;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .content form input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .content form button {
+        width: 100%;
+    }
+    
+    .movie-card {
+        width: 150px;
+    }
+    
+    .movie-poster,
+    .movie-poster-placeholder {
+        height: 225px;
+    }
+    
+    .movie-info h4 {
+        font-size: 0.9rem;
+    }
+    
+    .movie-meta {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 640px) and (orientation: portrait),
+       (max-width: 900px) and (max-aspect-ratio: 1.2),
+       (max-width: 480px) and (max-aspect-ratio: 0.8) {
+    .top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .top h1 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav {
+        justify-content: center;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .nav a {
+        flex: 1 1 auto;
+        text-align: center;
+        min-width: 0;
+    }
+
+    .box {
+        max-width: min(420px, calc(100vw - 1.5rem));
+        margin: 1.2rem auto;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .top {
+        padding-top: 0.8rem;
+        padding-bottom: 1rem;
+    }
+
+    .content {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .box {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .movie-carousel {
+        padding-top: 0.75rem;
+    }
+}
+
+@media (min-width: 1000px) and (min-aspect-ratio: 21/9) {
+    .content {
+        padding-left: clamp(2rem, 3vw, 4rem);
+        padding-right: clamp(2rem, 3vw, 4rem);
+    }
+
+    .box {
+        max-width: 560px;
+    }
+
+    .movie-card {
+        width: clamp(180px, 14vw, 220px);
+    }
+
+    .movie-poster,
+    .movie-poster-placeholder {
+        height: clamp(260px, 18vw, 320px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (min-aspect-ratio: 1.2) {
+    .top {
+        padding-left: clamp(1.1rem, 2vw, 1.8rem);
+        padding-right: clamp(1.1rem, 2vw, 1.8rem);
+    }
+
+    .content {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .movie-card {
+        width: 175px;
+    }
+}
+
+@media (max-width: 420px) and (max-aspect-ratio: 9/16),
+       (max-width: 360px) {
+    .top h1 {
+        font-size: 1.2rem;
+    }
+
+    .nav a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .box {
+        padding: 1.35rem 1rem;
+        border-radius: 20px;
+    }
+
+    .box h2 {
+        font-size: 1.6rem;
+    }
+
+    input,
+    button {
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+
+    .movie-card {
+        width: 132px;
+    }
+
+    .movie-poster,
+    .movie-poster-placeholder {
+        height: 198px;
+    }
+}
