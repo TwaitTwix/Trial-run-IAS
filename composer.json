@@ -1,0 +1,17 @@
+{
+  "require": {
+    "phpmailer/phpmailer": "^6.8",
+    "web-auth/webauthn-lib": "^4.9"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    },
+    "platform-check": false
+  },
+  "policy": {
+    "advisories": {
+      "block": false
+    }
+  }
+}
