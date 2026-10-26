@@ -1,0 +1,35 @@
+Apache HTTPS setup (XAMPP)
+
+1) Create or obtain an SSL certificate for localhost
+   - For local development, you can generate a self-signed certificate with OpenSSL, or use mkcert (recommended).
+   - mkcert (https://github.com/FiloSottile/mkcert) will create a CA and trusted certs for localhost.
+
+2) Configure Apache virtual host
+   - Edit `apache\conf\extra\httpd-vhosts.conf` (in XAMPP folder) and add:
+
+```
+<VirtualHost *:443>
+    ServerName localhost
+    DocumentRoot "C:/xampp/htdocs/php_app"
+    SSLEngine on
+    SSLCertificateFile "C:/path/to/localhost.pem"
+    SSLCertificateKeyFile "C:/path/to/localhost-key.pem"
+    <Directory "C:/xampp/htdocs/php_app">
+        Require all granted
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+```
+
+3) Enable SSL and restart Apache
+   - Ensure `httpd-ssl.conf` is included in `httpd.conf` (uncomment the Include line).
+   - Restart Apache from XAMPP Control Panel.
+
+4) If using self-signed certs, trust the cert in the OS/browser (mkcert automates this).
+
+5) Test WebAuthn
+   - Visit `https://localhost/php_app/` and use browser WebAuthn APIs (client JS must be served over HTTPS).
+
+Notes
+ - For production, obtain a certificate from a public CA.
+ - If Apache fails to start, check the XAMPP Apache error log for SSL path or permission errors.
